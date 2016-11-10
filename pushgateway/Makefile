@@ -7,7 +7,7 @@ rpm:
 	mkdir -p "$(PWD)/rpmbuild"
 	mkdir -p "$(PWD)/rpmbuild/SOURCES/"
 	mkdir -p "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION).linux-amd64"
-	cd "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION).linux-amd64" && wget https://github.com/prometheus/pushgateway/releases/download/$(VERSION)/pushgateway-$(VERSION).linux-amd64.tar.gz
+	cd "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION).linux-amd64" && wget https://github.com/prometheus/pushgateway/releases/download/$(VERSION)/pushgateway-$(VERSION).linux-amd64.tar.gz -O pushgateway-$(VERSION).linux-amd64.tar.gz
 	cd "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION).linux-amd64" && tar xzvf *tar.gz
 	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/pushgateway-$(VERSION).linux-amd64"
 	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz pushgateway-$(VERSION).linux-amd64.tar.gz pushgateway-$(VERSION).linux-amd64

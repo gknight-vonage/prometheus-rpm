@@ -6,7 +6,7 @@ all: rpm clean
 rpm:
 	mkdir -p "$(PWD)/rpmbuild"
 	mkdir -p "$(PWD)/rpmbuild/SOURCES/"
-	cd "$(PWD)/rpmbuild/SOURCES" && wget https://github.com/prometheus/graphite_exporter/releases/download/$(VERSION)/graphite_exporter-$(VERSION).linux-amd64.tar.gz
+	cd "$(PWD)/rpmbuild/SOURCES" && wget https://github.com/prometheus/graphite_exporter/releases/download/$(VERSION)/graphite_exporter-$(VERSION).linux-amd64.tar.gz -O graphite_exporter-$(VERSION).linux-amd64.tar.gz
 	cd "$(PWD)/rpmbuild/SOURCES" && mkdir "graphite_exporter-$(VERSION).linux-amd64" && tar xzvf *tar.gz -C "graphite_exporter-$(VERSION).linux-amd64"
 	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/graphite_exporter-$(VERSION).linux-amd64"
 	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz graphite_exporter-$(VERSION).linux-amd64.tar.gz graphite_exporter-$(VERSION).linux-amd64
