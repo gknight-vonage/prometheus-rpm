@@ -10,7 +10,8 @@ rpm:
 	cd "$(PWD)/rpmbuild/SOURCES" && tar xzvf *tar.gz
 	cp -Rv contrib "$(PWD)/rpmbuild/SOURCES/alertmanager-$(VERSION).linux-amd64"
 	cd "$(PWD)/rpmbuild/SOURCES" && tar cvfz alertmanager-$(VERSION).linux-amd64.tar.gz alertmanager-$(VERSION).linux-amd64
-	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/alertmanager.spec
+	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/alertmanager_sysvinit.spec
+	rpmbuild --define '_topdir '"$(PWD)/rpmbuild" -ba --clean contrib/alertmanager_systemd.spec
 
 deploy:
 	curl -v -F r=$(REPOSITORY) -F hasPom=false -F e=rpm -F g=$(GROUPID) -F a=alertmanager -F v=$(VERSION) -F p=RPM -F file=@$(WORKSPACE)/prometheus-rpm/alertmanager/rpmbuild/RPMS/x86_64/alertmanager-$(VERSION)-1.el6.x86_64.rpm -u $(REPOSITORY_CREDENTIALS) $(REPOSITORY_URL)

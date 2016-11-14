@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Alert Manager Service
+After=network.target
+
+
+[Service]
+ExecStart=/usr/bin/alertmanager -config.file=/etc/alertmanager/alert_manager.yaml -log.format 'logger:syslog?appname=alertmanager&local=7'
+User=prometheus
+
+[Install]
+WantedBy=multi-user.target
+
+
